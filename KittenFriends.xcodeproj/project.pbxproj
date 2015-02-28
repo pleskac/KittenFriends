@@ -8,12 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		380DD0E31A9C425200C4A246 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380DD0E21A9C425200C4A246 /* AppDelegate.swift */; };
-		380DD0E51A9C425200C4A246 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380DD0E41A9C425200C4A246 /* FirstViewController.swift */; };
+		380DD0E51A9C425200C4A246 /* AddSighting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380DD0E41A9C425200C4A246 /* AddSighting.swift */; };
 		380DD0E71A9C425200C4A246 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380DD0E61A9C425200C4A246 /* SecondViewController.swift */; };
 		380DD0EA1A9C425200C4A246 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 380DD0E81A9C425200C4A246 /* Main.storyboard */; };
 		380DD0EC1A9C425200C4A246 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 380DD0EB1A9C425200C4A246 /* Images.xcassets */; };
 		380DD0EF1A9C425200C4A246 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 380DD0ED1A9C425200C4A246 /* LaunchScreen.xib */; };
 		380DD0FB1A9C425200C4A246 /* KittenFriendsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380DD0FA1A9C425200C4A246 /* KittenFriendsTests.swift */; };
+		380DD1051A9EBE3100C4A246 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 380DD1041A9EBE3100C4A246 /* MapKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,7 +31,7 @@
 		380DD0DD1A9C425200C4A246 /* KittenFriends.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KittenFriends.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		380DD0E11A9C425200C4A246 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		380DD0E21A9C425200C4A246 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		380DD0E41A9C425200C4A246 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
+		380DD0E41A9C425200C4A246 /* AddSighting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSighting.swift; sourceTree = "<group>"; };
 		380DD0E61A9C425200C4A246 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		380DD0E91A9C425200C4A246 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		380DD0EB1A9C425200C4A246 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -38,6 +39,7 @@
 		380DD0F41A9C425200C4A246 /* KittenFriendsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KittenFriendsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		380DD0F91A9C425200C4A246 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		380DD0FA1A9C425200C4A246 /* KittenFriendsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KittenFriendsTests.swift; sourceTree = "<group>"; };
+		380DD1041A9EBE3100C4A246 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,6 +47,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				380DD1051A9EBE3100C4A246 /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -61,6 +64,7 @@
 		380DD0D41A9C425200C4A246 = {
 			isa = PBXGroup;
 			children = (
+				380DD1041A9EBE3100C4A246 /* MapKit.framework */,
 				380DD0DF1A9C425200C4A246 /* KittenFriends */,
 				380DD0F71A9C425200C4A246 /* KittenFriendsTests */,
 				380DD0DE1A9C425200C4A246 /* Products */,
@@ -80,7 +84,7 @@
 			isa = PBXGroup;
 			children = (
 				380DD0E21A9C425200C4A246 /* AppDelegate.swift */,
-				380DD0E41A9C425200C4A246 /* FirstViewController.swift */,
+				380DD0E41A9C425200C4A246 /* AddSighting.swift */,
 				380DD0E61A9C425200C4A246 /* SecondViewController.swift */,
 				380DD0E81A9C425200C4A246 /* Main.storyboard */,
 				380DD0EB1A9C425200C4A246 /* Images.xcassets */,
@@ -217,7 +221,7 @@
 			files = (
 				380DD0E71A9C425200C4A246 /* SecondViewController.swift in Sources */,
 				380DD0E31A9C425200C4A246 /* AppDelegate.swift in Sources */,
-				380DD0E51A9C425200C4A246 /* FirstViewController.swift in Sources */,
+				380DD0E51A9C425200C4A246 /* AddSighting.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -411,6 +415,7 @@
 				380DD1001A9C425300C4A246 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		380DD1011A9C425300C4A246 /* Build configuration list for PBXNativeTarget "KittenFriendsTests" */ = {
 			isa = XCConfigurationList;
@@ -419,6 +424,7 @@
 				380DD1031A9C425300C4A246 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
