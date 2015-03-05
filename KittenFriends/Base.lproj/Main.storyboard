@@ -31,7 +31,7 @@
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="nVy-1a-Avf"/>
                                     <constraint firstAttribute="height" constant="50" id="tU7-yl-3zl"/>
                                 </constraints>
-                                <state key="normal" title="Add"/>
+                                <state key="normal" title="Add Sighting"/>
                                 <connections>
                                     <action selector="addSighting:" destination="9pv-A4-QxB" eventType="touchUpInside" id="1sK-8u-cbg"/>
                                 </connections>

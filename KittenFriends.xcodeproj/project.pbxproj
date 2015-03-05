@@ -168,9 +168,11 @@
 				TargetAttributes = {
 					380DD0DC1A9C425200C4A246 = {
 						CreatedOnToolsVersion = 6.1.1;
+						DevelopmentTeam = D2CAW68VT7;
 					};
 					380DD0F31A9C425200C4A246 = {
 						CreatedOnToolsVersion = 6.1.1;
+						DevelopmentTeam = D2CAW68VT7;
 						TestTargetID = 380DD0DC1A9C425200C4A246;
 					};
 				};
@@ -366,6 +368,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -377,6 +381,7 @@
 				INFOPLIST_FILE = KittenFriendsTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/KittenFriends.app/KittenFriends";
 			};
 			name = Debug;
@@ -385,6 +390,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -392,6 +399,7 @@
 				INFOPLIST_FILE = KittenFriendsTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/KittenFriends.app/KittenFriends";
 			};
 			name = Release;

@@ -9,7 +9,7 @@
 import UIKit
 import MapKit
 
-class AddSighting: UIViewController, UITextFieldDelegate, CLLocationManagerDelegate {
+class AddSighting: UIViewController, UITextFieldDelegate, MKMapViewDelegate, CLLocationManagerDelegate {
     @IBOutlet var primaryColor: UITextField!
     @IBOutlet var addSightingMap: MKMapView!
     var locationManager:CLLocationManager!
@@ -29,12 +29,30 @@ class AddSighting: UIViewController, UITextFieldDelegate, CLLocationManagerDeleg
         self.view.endEditing(true)
     }
     
+    func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
+        let location = locations.last as CLLocation
+        
+        let center = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
+        let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
+        
+        self.addSightingMap.setRegion(region, animated: true)
+        
+        locationManager.stopUpdatingLocation()
+        
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
         // Dismiss keyboard
         primaryColor.delegate = self;
+        addSightingMap.delegate = self;
+        
+        setUserLocation();
+    }
+    
+    func setUserLocation(){
         
         // Get current location
         locationManager = CLLocationManager()
@@ -44,7 +62,11 @@ class AddSighting: UIViewController, UITextFieldDelegate, CLLocationManagerDeleg
         locationManager.startUpdatingLocation()
         
         // Set location as map view location
-        
+        addSightingMap.showsUserLocation = true
+    }
+    
+    override func applicationFinishedRestoringState() {
+        setUserLocation();
     }
 
     override func didReceiveMemoryWarning() {
