@@ -34,13 +34,14 @@ class AddSighting: UIViewController, UITextFieldDelegate, MKMapViewDelegate, CLL
         let location = locations.last as CLLocation
         
         let center = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
-        let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
+        let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.001, longitudeDelta: 0.001))
         
         self.addSightingMap.setRegion(region, animated: true)
         
         if(sightingAnnotation == nil && addSightingMap.delegate != nil){
-            sightingAnnotation = SightingAnnotation(coordinate: location.coordinate)
-            //sightingAnnotation.title = "TEST"
+            sightingAnnotation = SightingAnnotation(coordinate:location.coordinate)
+            //sightingAnnotation.coordinate = location.coordinate
+            sightingAnnotation.title = "The cat was here!"
             
             addSightingMap.addAnnotation(sightingAnnotation)
         }
@@ -52,45 +53,32 @@ class AddSighting: UIViewController, UITextFieldDelegate, MKMapViewDelegate, CLL
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        // Dismiss keyboard
         primaryColor.delegate = self;
         addSightingMap.delegate = self;
         
         setUserLocation();
     }
-    
-    func mapView(mapView: MKMapView!, annotationView view: MKAnnotationView!, didChangeDragState newState: MKAnnotationViewDragState, fromOldState oldState: MKAnnotationViewDragState) {
-        if newState == MKAnnotationViewDragState.Starting
-        {
-            view.dragState = MKAnnotationViewDragState.Dragging
-        }
-        else if newState == MKAnnotationViewDragState.Ending || newState == MKAnnotationViewDragState.Canceling
-        {
-            view.dragState = MKAnnotationViewDragState.None;
-        }
-    }
-    
+
     func mapView(mapView: MKMapView!, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView! {
         if(annotation is MKUserLocation){
-            // ignore user loctaion.... not sure if i want this
             return nil;
         }
         
-        if (annotation.isKindOfClass(SightingAnnotation)) {
+        let identifyer = "SightingPin"
+        
+        if annotation.isKindOfClass(SightingAnnotation) {
             var customAnnotation = annotation as? SightingAnnotation
             mapView.setTranslatesAutoresizingMaskIntoConstraints(false)
-            var annotationView = mapView.dequeueReusableAnnotationViewWithIdentifier("Custom") as MKPinAnnotationView!
+            var annotationView = mapView.dequeueReusableAnnotationViewWithIdentifier(identifyer) as MKPinAnnotationView!
             
-            if (annotationView == nil) {
-                var annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "Custom");
+            if annotationView == nil {
+                annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifyer);
                 annotationView.animatesDrop = true
                 annotationView.draggable = true
             } else {
                 annotationView.annotation = annotation;
-                annotationView.draggable = true
             }
             
-            //self.addBounceAnimationToView(annotationView)
             return annotationView
         } else {
             return nil
