@@ -16,7 +16,9 @@ class AddSighting: UIViewController, UITextFieldDelegate, MKMapViewDelegate, CLL
     var sightingAnnotation:MKPointAnnotation!
     
     @IBAction func addSighting(sender: AnyObject) {
-        var alert = UIAlertView(title: "Add Sighting", message: primaryColor.text, delegate: nil, cancelButtonTitle: "Cancel");
+        var message = "Text: \(primaryColor.text) Lat: \(sightingAnnotation.coordinate.latitude) Long: \(sightingAnnotation.coordinate.longitude)"
+        
+        var alert = UIAlertView(title: "Add Sighting", message: message, delegate: nil, cancelButtonTitle: "Cancel");
         
         alert.show();
     }
