@@ -37,6 +37,12 @@ class AddSighting: UIViewController, UITextFieldDelegate, MKMapViewDelegate, CLL
         
         self.addSightingMap.setRegion(region, animated: true)
         
+        var a = MKPointAnnotation()
+        a.coordinate = location.coordinate
+        a.title = "TEST"
+        
+        addSightingMap.addAnnotation(a)
+        
         locationManager.stopUpdatingLocation()
         
     }
@@ -52,6 +58,31 @@ class AddSighting: UIViewController, UITextFieldDelegate, MKMapViewDelegate, CLL
         setUserLocation();
     }
     
+    func mapView(mapView: MKMapView!, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView! {
+        if(annotation is MKUserLocation){
+            // ignore user loctaion.... not sure if i want this
+            return nil;
+        }
+        
+        if (annotation.isKindOfClass(MKPointAnnotation)) {
+            var customAnnotation = annotation as? MKPointAnnotation
+            mapView.setTranslatesAutoresizingMaskIntoConstraints(false)
+            var annotationView = mapView.dequeueReusableAnnotationViewWithIdentifier("Custom") as MKAnnotationView!
+            
+            if (annotationView == nil) {
+                var annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "Custom");
+                annotationView.animatesDrop = true
+            } else {
+                annotationView.annotation = annotation;
+            }
+            
+            //self.addBounceAnimationToView(annotationView)
+            return annotationView
+        } else {
+            return nil
+        }
+    }
+    
     func setUserLocation(){
         
         // Get current location
@@ -62,7 +93,7 @@ class AddSighting: UIViewController, UITextFieldDelegate, MKMapViewDelegate, CLL
         locationManager.startUpdatingLocation()
         
         // Set location as map view location
-        addSightingMap.showsUserLocation = true
+        addSightingMap.showsUserLocation = false
     }
     
     override func applicationFinishedRestoringState() {
