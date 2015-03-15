@@ -15,7 +15,6 @@
 		380DD0EF1A9C425200C4A246 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 380DD0ED1A9C425200C4A246 /* LaunchScreen.xib */; };
 		380DD0FB1A9C425200C4A246 /* KittenFriendsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380DD0FA1A9C425200C4A246 /* KittenFriendsTests.swift */; };
 		380DD1051A9EBE3100C4A246 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 380DD1041A9EBE3100C4A246 /* MapKit.framework */; };
-		3891218B1AB633A5002C0560 /* SightingAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3891218A1AB633A5002C0560 /* SightingAnnotation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,7 +40,6 @@
 		380DD0F91A9C425200C4A246 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		380DD0FA1A9C425200C4A246 /* KittenFriendsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KittenFriendsTests.swift; sourceTree = "<group>"; };
 		380DD1041A9EBE3100C4A246 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
-		3891218A1AB633A5002C0560 /* SightingAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SightingAnnotation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,7 +85,6 @@
 			children = (
 				380DD0E21A9C425200C4A246 /* AppDelegate.swift */,
 				380DD0E41A9C425200C4A246 /* AddSighting.swift */,
-				3891218A1AB633A5002C0560 /* SightingAnnotation.swift */,
 				380DD0E61A9C425200C4A246 /* SecondViewController.swift */,
 				380DD0E81A9C425200C4A246 /* Main.storyboard */,
 				380DD0EB1A9C425200C4A246 /* Images.xcassets */,
@@ -227,7 +224,6 @@
 				380DD0E71A9C425200C4A246 /* SecondViewController.swift in Sources */,
 				380DD0E31A9C425200C4A246 /* AppDelegate.swift in Sources */,
 				380DD0E51A9C425200C4A246 /* AddSighting.swift in Sources */,
-				3891218B1AB633A5002C0560 /* SightingAnnotation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

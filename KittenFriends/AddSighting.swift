@@ -13,7 +13,7 @@ class AddSighting: UIViewController, UITextFieldDelegate, MKMapViewDelegate, CLL
     @IBOutlet var primaryColor: UITextField!
     @IBOutlet var addSightingMap: MKMapView!
     var locationManager:CLLocationManager!
-    var sightingAnnotation:SightingAnnotation!
+    var sightingAnnotation:MKPointAnnotation!
     
     @IBAction func addSighting(sender: AnyObject) {
         var alert = UIAlertView(title: "Add Sighting", message: primaryColor.text, delegate: nil, cancelButtonTitle: "Cancel");
@@ -39,8 +39,8 @@ class AddSighting: UIViewController, UITextFieldDelegate, MKMapViewDelegate, CLL
         self.addSightingMap.setRegion(region, animated: true)
         
         if(sightingAnnotation == nil && addSightingMap.delegate != nil){
-            sightingAnnotation = SightingAnnotation(coordinate:location.coordinate)
-            //sightingAnnotation.coordinate = location.coordinate
+            sightingAnnotation = MKPointAnnotation()
+            sightingAnnotation.coordinate = location.coordinate
             sightingAnnotation.title = "The cat was here!"
             
             addSightingMap.addAnnotation(sightingAnnotation)
@@ -66,8 +66,8 @@ class AddSighting: UIViewController, UITextFieldDelegate, MKMapViewDelegate, CLL
         
         let identifyer = "SightingPin"
         
-        if annotation.isKindOfClass(SightingAnnotation) {
-            var customAnnotation = annotation as? SightingAnnotation
+        if annotation.isKindOfClass(MKPointAnnotation) {
+            var customAnnotation = annotation as? MKPointAnnotation
             mapView.setTranslatesAutoresizingMaskIntoConstraints(false)
             var annotationView = mapView.dequeueReusableAnnotationViewWithIdentifier(identifyer) as MKPinAnnotationView!
             
