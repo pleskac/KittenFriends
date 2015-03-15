@@ -13,6 +13,7 @@ class AddSighting: UIViewController, UITextFieldDelegate, MKMapViewDelegate, CLL
     @IBOutlet var primaryColor: UITextField!
     @IBOutlet var addSightingMap: MKMapView!
     var locationManager:CLLocationManager!
+    var sightingAnnotation:SightingAnnotation!
     
     @IBAction func addSighting(sender: AnyObject) {
         var alert = UIAlertView(title: "Add Sighting", message: primaryColor.text, delegate: nil, cancelButtonTitle: "Cancel");
@@ -21,12 +22,12 @@ class AddSighting: UIViewController, UITextFieldDelegate, MKMapViewDelegate, CLL
     }
 
     func textFieldShouldReturn(textField: UITextField) -> Bool {
-        self.view.endEditing(true);
+        textField.resignFirstResponder();
         return false;
     }
     
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
-        self.view.endEditing(true)
+        primaryColor.resignFirstResponder()
     }
     
     func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
@@ -37,14 +38,14 @@ class AddSighting: UIViewController, UITextFieldDelegate, MKMapViewDelegate, CLL
         
         self.addSightingMap.setRegion(region, animated: true)
         
-        var a = MKPointAnnotation()
-        a.coordinate = location.coordinate
-        a.title = "TEST"
-        
-        addSightingMap.addAnnotation(a)
+        if(sightingAnnotation == nil && addSightingMap.delegate != nil){
+            sightingAnnotation = SightingAnnotation(coordinate: location.coordinate)
+            //sightingAnnotation.title = "TEST"
+            
+            addSightingMap.addAnnotation(sightingAnnotation)
+        }
         
         locationManager.stopUpdatingLocation()
-        
     }
     
     override func viewDidLoad() {
@@ -58,22 +59,35 @@ class AddSighting: UIViewController, UITextFieldDelegate, MKMapViewDelegate, CLL
         setUserLocation();
     }
     
+    func mapView(mapView: MKMapView!, annotationView view: MKAnnotationView!, didChangeDragState newState: MKAnnotationViewDragState, fromOldState oldState: MKAnnotationViewDragState) {
+        if newState == MKAnnotationViewDragState.Starting
+        {
+            view.dragState = MKAnnotationViewDragState.Dragging
+        }
+        else if newState == MKAnnotationViewDragState.Ending || newState == MKAnnotationViewDragState.Canceling
+        {
+            view.dragState = MKAnnotationViewDragState.None;
+        }
+    }
+    
     func mapView(mapView: MKMapView!, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView! {
         if(annotation is MKUserLocation){
             // ignore user loctaion.... not sure if i want this
             return nil;
         }
         
-        if (annotation.isKindOfClass(MKPointAnnotation)) {
-            var customAnnotation = annotation as? MKPointAnnotation
+        if (annotation.isKindOfClass(SightingAnnotation)) {
+            var customAnnotation = annotation as? SightingAnnotation
             mapView.setTranslatesAutoresizingMaskIntoConstraints(false)
-            var annotationView = mapView.dequeueReusableAnnotationViewWithIdentifier("Custom") as MKAnnotationView!
+            var annotationView = mapView.dequeueReusableAnnotationViewWithIdentifier("Custom") as MKPinAnnotationView!
             
             if (annotationView == nil) {
                 var annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "Custom");
                 annotationView.animatesDrop = true
+                annotationView.draggable = true
             } else {
                 annotationView.annotation = annotation;
+                annotationView.draggable = true
             }
             
             //self.addBounceAnimationToView(annotationView)
@@ -84,16 +98,17 @@ class AddSighting: UIViewController, UITextFieldDelegate, MKMapViewDelegate, CLL
     }
     
     func setUserLocation(){
-        
         // Get current location
-        locationManager = CLLocationManager()
-        locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.requestWhenInUseAuthorization()
-        locationManager.startUpdatingLocation()
-        
-        // Set location as map view location
-        addSightingMap.showsUserLocation = false
+        if(locationManager == nil){
+            locationManager = CLLocationManager()
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyBest
+            locationManager.requestWhenInUseAuthorization()
+            locationManager.startUpdatingLocation()
+            
+            // Set location as map view location
+            addSightingMap.showsUserLocation = false
+        }
     }
     
     override func applicationFinishedRestoringState() {
