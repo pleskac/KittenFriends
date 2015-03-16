@@ -15,6 +15,7 @@
 		380DD0EF1A9C425200C4A246 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 380DD0ED1A9C425200C4A246 /* LaunchScreen.xib */; };
 		380DD0FB1A9C425200C4A246 /* KittenFriendsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380DD0FA1A9C425200C4A246 /* KittenFriendsTests.swift */; };
 		380DD1051A9EBE3100C4A246 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 380DD1041A9EBE3100C4A246 /* MapKit.framework */; };
+		3891218D1AB65502002C0560 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 3891218C1AB65502002C0560 /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +41,7 @@
 		380DD0F91A9C425200C4A246 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		380DD0FA1A9C425200C4A246 /* KittenFriendsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KittenFriendsTests.swift; sourceTree = "<group>"; };
 		380DD1041A9EBE3100C4A246 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		3891218C1AB65502002C0560 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +66,7 @@
 		380DD0D41A9C425200C4A246 = {
 			isa = PBXGroup;
 			children = (
+				3891218C1AB65502002C0560 /* README.md */,
 				380DD1041A9EBE3100C4A246 /* MapKit.framework */,
 				380DD0DF1A9C425200C4A246 /* KittenFriends */,
 				380DD0F71A9C425200C4A246 /* KittenFriendsTests */,
@@ -223,6 +226,7 @@
 			files = (
 				380DD0E71A9C425200C4A246 /* SecondViewController.swift in Sources */,
 				380DD0E31A9C425200C4A246 /* AppDelegate.swift in Sources */,
+				3891218D1AB65502002C0560 /* README.md in Sources */,
 				380DD0E51A9C425200C4A246 /* AddSighting.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
