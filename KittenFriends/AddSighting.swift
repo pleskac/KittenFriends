@@ -8,15 +8,33 @@
 
 import UIKit
 import MapKit
+import CoreData
 
 class AddSighting: UIViewController, UITextFieldDelegate, MKMapViewDelegate, CLLocationManagerDelegate {
     @IBOutlet var primaryColor: UITextField!
     @IBOutlet var addSightingMap: MKMapView!
     var locationManager:CLLocationManager!
     var sightingAnnotation:MKPointAnnotation!
+    let managedObjectContext = (UIApplication.sharedApplication().delegate as AppDelegate).managedObjectContext
     
     @IBAction func addSighting(sender: AnyObject) {
         var message = "Text: \(primaryColor.text) Lat: \(sightingAnnotation.coordinate.latitude) Long: \(sightingAnnotation.coordinate.longitude)"
+        
+        let newItem = NSEntityDescription.insertNewObjectForEntityForName("Sighting", inManagedObjectContext: self.managedObjectContext!) as Sighting
+        newItem.username = "MarkPleskac"
+        newItem.lat = sightingAnnotation.coordinate.latitude
+        newItem.long = sightingAnnotation.coordinate.longitude
+        newItem.color = primaryColor.text
+        
+        // Create a new fetch request using the Sighting entity
+        let fetchRequest = NSFetchRequest(entityName: "Sighting")
+        
+        // Execute the fetch request, and cast the results to an array of Sighting objects
+        if let fetchResults = managedObjectContext!.executeFetchRequest(fetchRequest, error: nil) as? [Sighting] {
+            var alert2 = UIAlertView(title: "Add Sighting", message: "\(fetchResults.count)", delegate: nil, cancelButtonTitle: "Cancel");
+            
+            alert2.show();
+        }
         
         var alert = UIAlertView(title: "Add Sighting", message: message, delegate: nil, cancelButtonTitle: "Cancel");
         
@@ -43,7 +61,6 @@ class AddSighting: UIViewController, UITextFieldDelegate, MKMapViewDelegate, CLL
         if(sightingAnnotation == nil && addSightingMap.delegate != nil){
             sightingAnnotation = MKPointAnnotation()
             sightingAnnotation.coordinate = location.coordinate
-            sightingAnnotation.title = "The cat was here!"
             
             addSightingMap.addAnnotation(sightingAnnotation)
         }
