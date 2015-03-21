@@ -120,16 +120,26 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="hBf-Bh-Vk2">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
+                            </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="NDk-cv-Gan" firstAttribute="top" secondItem="zEq-FU-wV5" secondAttribute="bottom" constant="8" symbolic="YES" id="Day-4N-Vmt"/>
                             <constraint firstItem="NDk-cv-Gan" firstAttribute="centerX" secondItem="zEq-FU-wV5" secondAttribute="centerX" id="JgO-Fn-dHn"/>
+                            <constraint firstItem="hBf-Bh-Vk2" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leading" id="XWU-GX-ROT"/>
+                            <constraint firstItem="hBf-Bh-Vk2" firstAttribute="top" secondItem="QS5-Rx-YEW" secondAttribute="top" id="n9g-pP-uZx"/>
+                            <constraint firstItem="hBf-Bh-Vk2" firstAttribute="centerX" secondItem="zEq-FU-wV5" secondAttribute="centerX" id="npD-BC-ri5"/>
                             <constraint firstAttribute="centerX" secondItem="zEq-FU-wV5" secondAttribute="centerX" id="qqM-NS-xev"/>
                             <constraint firstAttribute="centerY" secondItem="zEq-FU-wV5" secondAttribute="centerY" id="qzY-Ky-pLD"/>
+                            <constraint firstItem="hBf-Bh-Vk2" firstAttribute="bottom" secondItem="Djb-ko-YwX" secondAttribute="top" id="uyU-oE-yac"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" systemItem="history" id="cPa-gy-q4n"/>
+                    <connections>
+                        <outlet property="historyMap" destination="hBf-Bh-Vk2" id="gvm-Rj-UxI"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
