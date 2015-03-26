@@ -97,10 +97,10 @@
 			children = (
 				380DD0E21A9C425200C4A246 /* AppDelegate.swift */,
 				380DD0E41A9C425200C4A246 /* AddSighting.swift */,
+				380DD0E61A9C425200C4A246 /* History.swift */,
 				38C6CFB41ABDD017000A07F9 /* SightingHelper.swift */,
 				38C6CFAD1ABA7353000A07F9 /* Sighting.xcdatamodeld */,
 				38C6CFB21ABA83DD000A07F9 /* Sighting.swift */,
-				380DD0E61A9C425200C4A246 /* History.swift */,
 				380DD0E81A9C425200C4A246 /* Main.storyboard */,
 				380DD0EB1A9C425200C4A246 /* Images.xcassets */,
 				380DD0ED1A9C425200C4A246 /* LaunchScreen.xib */,

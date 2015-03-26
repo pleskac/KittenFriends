@@ -22,7 +22,7 @@ class AddSighting: UIViewController, UITextFieldDelegate, MKMapViewDelegate, CLL
         
         dataHelper.addSighting("MarkPleskac", color: primaryColor.text, lat: sightingAnnotation.coordinate.latitude, long: sightingAnnotation.coordinate.longitude);
 
-        var alert = UIAlertView(title: "Add Sighting", message: message, delegate: nil, cancelButtonTitle: "Cancel");
+        var alert = UIAlertView(title: "Add Sighting", message: message, delegate: nil, cancelButtonTitle: nil, otherButtonTitles: "OK");
         
         alert.show();
     }
@@ -72,6 +72,7 @@ class AddSighting: UIViewController, UITextFieldDelegate, MKMapViewDelegate, CLL
         
         primaryColor.delegate = self;
         addSightingMap.delegate = self;
+        addSightingMap.showsUserLocation = false;
         
         setUserLocation();
     }
@@ -81,7 +82,7 @@ class AddSighting: UIViewController, UITextFieldDelegate, MKMapViewDelegate, CLL
             return nil;
         }
         
-        let identifyer = "SightingPin"
+        let identifyer = "SightingPin";
         
         if annotation.isKindOfClass(MKPointAnnotation) {
             var customAnnotation = annotation as? MKPointAnnotation

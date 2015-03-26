@@ -31,17 +31,19 @@ class SightingHelper: NSObject {
         newItem.color = color
     }
     
-    func getNumberOfSightings() -> Int{
+    func getSightings() -> [Sighting]{
         // Create a new fetch request using the Sighting entity
         let fetchRequest = NSFetchRequest(entityName: "Sighting")
         
         // Execute the fetch request, and cast the results to an array of Sighting objects
         if let fetchResults = managedObjectContext.executeFetchRequest(fetchRequest, error: nil) as? [Sighting] {
-            //var alert2 = UIAlertView(title: "Add Sighting", message: "\(fetchResults.count)", delegate: nil, cancelButtonTitle: "Cancel");
-            return fetchResults.count
-            //alert2.show();
+            return fetchResults;
         }
         
-        return -1
+        return [];
+    }
+    
+    func getNumberOfSightings() -> Int{
+        return getSightings().count;
     }
 }
