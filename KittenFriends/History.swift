@@ -15,6 +15,20 @@ class SecondViewController: UIViewController, MKMapViewDelegate, CLLocationManag
     var locationManager:CLLocationManager!
     let dataHelper = SightingHelper(fromAppDelegate: (UIApplication.sharedApplication().delegate as AppDelegate));
     
+    // This is NOT performant. This is SO BAD.
+    func hardRefreshSightings(){
+        // Remove ALL annotations
+        let annotationsToRemove = historyMap.annotations
+        historyMap.removeAnnotations( annotationsToRemove )
+        
+        // Add back ALL annotations
+        addPinsToMap()
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        hardRefreshSightings();
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -22,7 +36,7 @@ class SecondViewController: UIViewController, MKMapViewDelegate, CLLocationManag
         historyMap.delegate = self;
         setUserLocation();
         
-        addPinsToMap()
+        //addPinsToMap()
     }
     
     
@@ -30,7 +44,7 @@ class SecondViewController: UIViewController, MKMapViewDelegate, CLLocationManag
         let location = locations.last as CLLocation
         
         let center = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
-        let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
+        let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05))
         
         self.historyMap.setRegion(region, animated: true)
         
@@ -54,7 +68,7 @@ class SecondViewController: UIViewController, MKMapViewDelegate, CLLocationManag
         // Dispose of any resources that can be recreated.
     }
 
-    func addPinsToMap(){
+    private func addPinsToMap(){
         var sightings = dataHelper.getSightings();
         
         // TODO: only add necessary pins, or limit it? IDK.
@@ -63,7 +77,7 @@ class SecondViewController: UIViewController, MKMapViewDelegate, CLLocationManag
             var lat = CLLocationDegrees(s.lat);
             var long = CLLocationDegrees(s.long);
             sightingAnnotation.coordinate = CLLocationCoordinate2D(latitude: lat, longitude: long)
-            
+            sightingAnnotation.title = s.color
             historyMap.addAnnotation(sightingAnnotation)
         }
     }

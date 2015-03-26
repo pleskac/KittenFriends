@@ -22,6 +22,7 @@ class AddSighting: UIViewController, UITextFieldDelegate, MKMapViewDelegate, CLL
         
         dataHelper.addSighting("MarkPleskac", color: primaryColor.text, lat: sightingAnnotation.coordinate.latitude, long: sightingAnnotation.coordinate.longitude);
 
+        //TODO: allow a cancel and don't add this to the database? or not? PM... where are you PM?
         var alert = UIAlertView(title: "Add Sighting", message: message, delegate: nil, cancelButtonTitle: nil, otherButtonTitles: "OK");
         
         alert.show();
