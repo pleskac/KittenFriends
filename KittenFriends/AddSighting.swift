@@ -14,7 +14,7 @@ class AddSighting: UIViewController, UITextFieldDelegate, MKMapViewDelegate, CLL
     @IBOutlet var addSightingMap: MKMapView!
     var locationManager:CLLocationManager!
     var sightingAnnotation:MKPointAnnotation!
-    let dataHelper = SightingHelper(fromAppDelegate: (UIApplication.sharedApplication().delegate as AppDelegate));
+    let dataHelper = SightingHelper(fromAppDelegate: (UIApplication.sharedApplication().delegate as! AppDelegate));
     //let managedObjectContext = (UIApplication.sharedApplication().delegate as AppDelegate).managedObjectContext
     
     @IBAction func addSighting(sender: AnyObject) {
@@ -33,12 +33,13 @@ class AddSighting: UIViewController, UITextFieldDelegate, MKMapViewDelegate, CLL
         return false;
     }
     
-    override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
+    //override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
+    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent?) {
         primaryColor.resignFirstResponder()
     }
     
     func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
-        let location = locations.last as CLLocation
+        let location = locations.last as! CLLocation
         
         let center = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
         let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.001, longitudeDelta: 0.001))
@@ -88,7 +89,7 @@ class AddSighting: UIViewController, UITextFieldDelegate, MKMapViewDelegate, CLL
         if annotation.isKindOfClass(MKPointAnnotation) {
             var customAnnotation = annotation as? MKPointAnnotation
             mapView.setTranslatesAutoresizingMaskIntoConstraints(false)
-            var annotationView = mapView.dequeueReusableAnnotationViewWithIdentifier(identifyer) as MKPinAnnotationView!
+            var annotationView = mapView.dequeueReusableAnnotationViewWithIdentifier(identifyer) as! MKPinAnnotationView!
             
             if annotationView == nil {
                 annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifyer);

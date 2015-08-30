@@ -23,12 +23,12 @@ class SightingHelper: NSObject {
     }
     
     func addSighting(userName: NSString, color: NSString, lat: Double, long: Double){
-        let newItem = NSEntityDescription.insertNewObjectForEntityForName("Sighting", inManagedObjectContext: self.managedObjectContext) as Sighting
+        let newItem = NSEntityDescription.insertNewObjectForEntityForName("Sighting", inManagedObjectContext: self.managedObjectContext) as! Sighting
         
-        newItem.username = userName
+        newItem.username = userName as String
         newItem.lat = lat
         newItem.long = long
-        newItem.color = color
+        newItem.color = color as String
     }
     
     func getSightings() -> [Sighting]{

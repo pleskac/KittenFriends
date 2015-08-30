@@ -13,7 +13,7 @@ class SecondViewController: UIViewController, MKMapViewDelegate, CLLocationManag
 
     @IBOutlet var historyMap: MKMapView!
     var locationManager:CLLocationManager!
-    let dataHelper = SightingHelper(fromAppDelegate: (UIApplication.sharedApplication().delegate as AppDelegate));
+    let dataHelper = SightingHelper(fromAppDelegate: (UIApplication.sharedApplication().delegate as! AppDelegate));
     
     // This is NOT performant. This is SO BAD.
     func hardRefreshSightings(){
@@ -41,7 +41,7 @@ class SecondViewController: UIViewController, MKMapViewDelegate, CLLocationManag
     
     
     func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
-        let location = locations.last as CLLocation
+        let location = locations.last as! CLLocation
         
         let center = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
         let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05))
